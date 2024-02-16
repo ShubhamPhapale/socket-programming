@@ -77,6 +77,11 @@ def main():
                     # Handle data from an existing client
                     handle_client(readable_socket, clients)
 
+    except OSError as e:
+        if e.errno == 48:  # Error code 48: Address already in use
+            print("Error: Another server is already running on the specified port.")
+        else:
+            print(f"Error: {e}")
     except ConnectionResetError:
         print(f"Client {client_socket.fileno()} disconnected.")
     except KeyboardInterrupt:
