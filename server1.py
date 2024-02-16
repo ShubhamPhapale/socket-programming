@@ -13,6 +13,7 @@ def handle_client(client_socket):
             # Receive client's message
             client_message = client_socket.recv(1024).decode()
             if not client_message:
+                print(f"Client {client_socket.fileno()} disconnected.")
                 break
 
             print("Client sent message:", client_message)
