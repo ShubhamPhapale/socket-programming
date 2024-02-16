@@ -16,7 +16,6 @@ def handle_client(client_socket, clients):
         print(f"Client {client_socket.fileno()} disconnected.")
         clients.remove(client_socket)
         client_socket.close()
-        clients.remove(client_socket)
         return
 
     else :
@@ -77,6 +76,11 @@ def main():
                     # Handle data from an existing client
                     handle_client(readable_socket, clients)
 
+    except OSError as e:
+        if e.errno == 48:  # Error code 48: Address already in use
+            print("Error: Another server is already running on the specified port.")
+        else:
+            print(f"Error: {e}")
     except ConnectionResetError:
         print(f"Client {client_socket.fileno()} disconnected.")
     except KeyboardInterrupt:

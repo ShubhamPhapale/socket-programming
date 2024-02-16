@@ -52,6 +52,11 @@ def main():
                         print(f"Received from client {readable_socket.fileno()}: {data.decode()}")
                         readable_socket.sendall(data)
 
+    except OSError as e:
+        if e.errno == 48:  # Error code 48: Address already in use
+            print("Error: Another server is already running on the specified port.")
+        else:
+            print(f"Error: {e}")
     except KeyboardInterrupt:
         print("Server terminated by user.")
     finally:
