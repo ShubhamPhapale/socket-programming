@@ -69,6 +69,11 @@ def main():
             client_thread = threading.Thread(target=handle_client, args=(client_socket,), daemon=True)
             client_thread.start()
 
+    except OSError as e:
+        if e.errno == 48:  # Error code 48: Address already in use
+            print("Error: Another server is already running on the specified port.")
+        else:
+            print(f"Error: {e}")
     except KeyboardInterrupt:
         print("Server terminated by user.")
     finally:
