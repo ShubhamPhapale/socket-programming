@@ -16,7 +16,6 @@ def handle_client(client_socket, clients):
         print(f"Client {client_socket.fileno()} disconnected.")
         clients.remove(client_socket)
         client_socket.close()
-        clients.remove(client_socket)
         return
 
     else :
