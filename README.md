@@ -28,6 +28,12 @@ python server#.py  # Replace # with 1, 2, 3, or 4
 python client.py
 ```
 
+## Additional Resources
+
+- [YouTube Video](https://youtu.be/qstyrxJytZU)
+- [My YouTube Channel](https://www.youtube.com/channel/UCzOmg9hOy3NBsScX--Nrb5Q)
+
+
 ## Testing
 Comprehensive tests have been conducted to ensure:
 1. Correct arithmetic operations
